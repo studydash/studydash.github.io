@@ -20,8 +20,21 @@
       }
 
       #urlFrame {
-        padding: 16px;
+        display: flex;
+        padding: 12px;
         background: yellow;
+        color: black;
+      }
+
+      #urlLabel {
+        font-weight: bold;
+        width: 135px;
+        padding-top: 5px;
+      }
+
+      #urlBox {
+        width: 100%;
+        font-size: 18px;
       }
 
       #bodyFrame {
@@ -33,14 +46,14 @@
     <script>
       window.addEventListener("message", (event) => {
         // console.log(">> Message received!", event)
-        document.getElementById("urlBox").innerHTML = event.data
+        document.getElementById("urlBox").value = event.data
       }, false);
     </script>
   </head>
   <body>
     <div id="wrapper">
       <div id="urlFrame">
-        <strong>Latest QA Build:</strong> <span id="urlBox">N/A</span>
+        <div id="urlLabel">Latest QA Build:</div> <input type="text" id="urlBox" readonly />
       </div>
       <iframe id="bodyFrame" src="https://captains-log--pr47-sprint-imbe-7qvtjsud.web.app/studydash" frameborder="0"></iframe>
     </div>
