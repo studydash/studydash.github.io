@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>WebGL Test01</title>
+  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <meta name="author" content="SitePoint">
+
+  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:image" content="image.png">
+
+  <!-- <link rel="stylesheet" href="css/styles.css?v=1.0"> -->
+
+</head>
+
+<body>
+  <script type="module">
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js'
+    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js'
+    import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js"
+
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth/2, window.innerHeight/2 );
+    renderer.setClearColor(0xEEEEEE);
+    document.body.prepend( renderer.domElement );
+    const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    const controls = new OrbitControls(camera, renderer.domElement)
+    controls.autoRotate = true
+
+    const loader = new GLTFLoader();
+    const scene = new THREE.Scene();
+    var light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+    scene.add( light );
+    loader.load( './island07.glb', (gltf) => {
+      console.log('>> island gltf loaded')
+      scene.add( gltf.scene );
+      camera.position.z = 25;
+      animate()
+    }, undefined, (error) => {
+      console.error(error)
+    })
+
+    function animate () {
+      requestAnimationFrame(animate)
+      // camera.position.x += 0.01
+      controls.update()
+      renderer.render( scene, camera )
+		}
+
+  </script>
+</body>
+</html>
