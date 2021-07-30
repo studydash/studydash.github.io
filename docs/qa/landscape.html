@@ -14,15 +14,51 @@
   <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
   <meta property="og:description" content="A simple HTML5 Template for new projects.">
   <meta property="og:image" content="image.png">
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="css/landscape.css?v=2.0">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
+
+    .board {
+      position: absolute;
+      display: flex;
+      left: 43px;
+      top: 29px;
+    }
+
+    .personBox {
+      width: 205px;
+      height: 28px;
+    }
+
+    .personTitle {
+      background: #632242;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+      font-family: 'Chakra Petch', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 29px;
+      color: #FFFFFF;
+
+      padding: 2px;
+      padding-left: 7px;
+      box-sizing: border-box;
+    }
 
   </style>
 </head>
 
 <body>
-  <section class="stage">
+  <div class="board">
+    <div class="personBox">
+      <div class="personTitle">
+        Robert
+      </div>
+    </div>
+  </div>  
 
+  <section class="stage">
     <svg height="390" width="550" id="mountains">
       <polygon points="300,390 190,90 320,130 400,340" fill="#5d2042" />
       <polygon points="0,340 108,190 194,100 201,120 301,390" fill="#320e40" />
@@ -138,8 +174,6 @@
     </svg>
 
     <canvas id="sky"></canvas>
-
-
   </section>
   <script>
     var sky = document.getElementById("sky");
